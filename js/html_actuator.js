@@ -110,20 +110,23 @@ HTMLActuator.prototype.updateScore = function (score) {
   var difference = score - this.score;
   this.score = score;
 
-  this.scoreContainer.textContent = this.score;
+    this.scoreContainer.textContent = '0x' + this.score.toString(16);
     
 
   if (difference > 0) {
     var addition = document.createElement("div");
     addition.classList.add("score-addition");
-      addition.textContent = "+" + difference;
+    addition.textContent = "+" + '0x' +  difference.toString(16);
 
     this.scoreContainer.appendChild(addition);
   }
 };
 
 HTMLActuator.prototype.updateBestScore = function (bestScore) {
-    this.bestContainer.textContent = bestScore.toString(16);
+    
+    //bestScore is a string
+    var besttext = '0x' + parseInt(bestScore).toString(16);
+    this.bestContainer.textContent = besttext;
 };
 
 HTMLActuator.prototype.message = function (won) {
